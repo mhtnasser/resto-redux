@@ -1,36 +1,32 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, combineReducers, configureStore } from "@reduxjs/toolkit";
+import { cartSlice } from "../features/cart/cartSlice";
+import { ownerSlice } from "../features/owner/ownerSlice";
+import { notesSlice } from "../features/notes/notesSlice";
+import { thunk } from "redux-thunk"
+
 
 let state = {
-    value: null,
+    owner: {},
     list: []
-}
-
-const reducer = (currentState, action) => {
-    switch (action.type) {
-        case 'ADD_PRODUCT':
-            const listWithNewProduct = [...currentState.list, action.payload]
-            return {...currentState, list: listWithNewProduct}
-        case 'REMOVE_PRODUCT':
-            const list = currentState.list.filter(
-                (item, index) => index !== action.payload
-            )
-            return {...currentState, list: list}
-        case 'APPLY_VOUCHER':
-            const withVoucherList = currentState.list.map(
-                item => item.title === 'Super Crémeux' ? ({...item, price: action.payload.price}) : item
-            )
-            return {...currentState, list: withVoucherList}
-        case 'UPDATE_FIRSTNAME':
-            const owner = {...currentState.owner, firstName: action.payload}
-            return {...currentState, owner}
-        default:
-            return currentState
-    }
 }
 
 export const store = configureStore(
     {
         preloadedState: state,
-        reducer
-    }
+        reducer: combineReducers({
+            owner: ownerSlice.reducer,
+            list: cartSlice.reducer,
+            notes: notesSlice.reducer,
+        }),
+        // le widdleware intercepte les action avant de les transmettre aux reducers
+        //middleware: (getDefaultMiddleware) =>
+        //    getDefaultMiddleware().prepend([
+        //        (store) => (next) => (action) => {
+        //            console.log('Action', action);
+        //            next(action);
+        //        }
+        //    ])
+        
+    },
+    applyMiddleware(thunk)
 )

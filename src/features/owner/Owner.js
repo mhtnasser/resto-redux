@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
-import { useStore } from "react-redux"
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { ownerSlice } from "./ownerSlice";
 
 export const Owner = () => {
-    const store = useStore();
-    const [owner, setOwner] = useState(store.getState().owner)
+    const dispatch = useDispatch();
+    const { owner } = useSelector((state) => state.owner)
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
         const firstName = evt.currentTarget.firstName.value;
-        store.dispatch({
-            type: 'UPDATE_FIRSTNAME',
-            payload: firstName,
-        });
+        dispatch(ownerSlice.actions.updateFirstName(firstName));
     };
-    
-    useEffect(() => {
-        store.subscribe(() => setOwner(store.getState().owner))
-    })
 
     return (
         <form onSubmit={handleSubmit} className="OwnerForm">

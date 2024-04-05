@@ -163,3 +163,63 @@ body {
   padding: 16px;
   color: white;
 }
+
+
+.Notes {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Notes h2 {
+  width: 100%;
+}
+
+.Notes form {
+  width: calc(30% - 32px);
+  padding: 16px;
+}
+
+.Notes label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.Notes textarea {
+  width: 100%;
+  height: 300px;
+  padding: 8px;
+}
+
+.Notes form button {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #282c34;
+  color: white;
+  width: 100%;
+}
+
+.Notes ul {
+  width: 70%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Notes li {
+  width: 80%;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Notes li button {
+  background-color: #fb7061;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+}
