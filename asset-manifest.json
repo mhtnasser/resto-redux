@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/resto-redux/static/css/main.4bd821b9.css",
+    "main.js": "/resto-redux/static/js/main.c2bed220.js",
+    "index.html": "/resto-redux/index.html",
+    "main.4bd821b9.css.map": "/resto-redux/static/css/main.4bd821b9.css.map",
+    "main.c2bed220.js.map": "/resto-redux/static/js/main.c2bed220.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4bd821b9.css",
+    "static/js/main.c2bed220.js"
+  ]
+}
